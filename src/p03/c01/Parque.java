@@ -44,6 +44,11 @@ public class Parque implements IParque{
 		comprobarAntesDeEntrar();
 		setValor(valor + 1);
 		
+		// Si no hay entradas por esa puerta, inicializamos
+		if (contadoresPersonasPuerta.get(puerta) == null){
+					contadoresPersonasPuerta.put(puerta, 0);
+		}	
+		
 		/*contadorPersonasTotales =contadorPersonasTotales + 1;*/
 		
 		// Aumentamos el contador total y el individual
@@ -57,13 +62,7 @@ public class Parque implements IParque{
 			Logger.getGlobal().log(Level.INFO,"Interrupcion de hilos que utiliza el objeto parque " + puerta);	
 		}
 		
-		// Si no hay entradas por esa puerta, inicializamos
-		if (contadoresPersonasPuerta.get(puerta) == null){
-			contadoresPersonasPuerta.put(puerta, 0);
-		}
-		
-		
-		
+			
 		
 		
 		// Imprimimos el estado del parque
@@ -95,6 +94,11 @@ public class Parque implements IParque{
 		comprobarAntesDeSalir();
 		setValor(valor - 1);
 		
+		// Si no hay entradas por esa puerta, inicializamos
+		if (contadoresPersonasPuerta.get(puerta) == null){
+							contadoresPersonasPuerta.put(puerta, 0);
+		}
+		
 		// Aumentamos el contador total y el individual
 		contadorPersonasTotales--;		
 		contadoresPersonasPuerta.put(puerta, contadoresPersonasPuerta.get(puerta)-1);
@@ -104,12 +108,8 @@ public class Parque implements IParque{
 		} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					Logger.getGlobal().log(Level.INFO,"Interrupcion de hilos que utiliza el objeto parque " + puerta);	
-		}
-				
-		// Si no hay entradas por esa puerta, inicializamos
-		if (contadoresPersonasPuerta.get(puerta) == null){
-					contadoresPersonasPuerta.put(puerta, 0);
 		}				
+						
 				
 				
 				
@@ -142,10 +142,10 @@ public class Parque implements IParque{
 		System.out.println(" ");
 	}
 	
-	private String obtenerTmedio() {
+	/*private String obtenerTmedio() {
 		// TODO Auto-generated method stub
 		return null;
-	}
+	}*/
 	
 	private int sumarContadoresPuerta() {
 		int sumaContadoresPuerta = 0;
